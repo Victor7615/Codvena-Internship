@@ -1,0 +1,45 @@
+artifact_path: file:///c:/Users/USER/Downloads/Codvena/Volvo/mlruns/581584146196918816/models/m-74ae910e053148769d47f38563f6fd25/artifacts
+flavors:
+  lightgbm:
+    code: null
+    data: model.pkl
+    lgb_version: 4.6.0
+    model_class: lightgbm.sklearn.LGBMRegressor
+  python_function:
+    data: model.pkl
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.lightgbm
+    python_version: 3.11.7
+is_signature_from_type_hint: false
+mlflow_version: 3.1.4
+model_id: m-74ae910e053148769d47f38563f6fd25
+model_size_bytes: 180662
+model_uuid: m-74ae910e053148769d47f38563f6fd25
+prompts: null
+run_id: 314b6f59ca514163bc0b4ca291b88f11
+signature:
+  inputs: '[{"type": "double", "name": "ON_STREAM_HRS", "required": true}, {"type":
+    "double", "name": "AVG_DOWNHOLE_PRESSURE", "required": true}, {"type": "double",
+    "name": "AVG_DOWNHOLE_TEMPERATURE", "required": true}, {"type": "double", "name":
+    "AVG_DP_TUBING", "required": true}, {"type": "double", "name": "AVG_ANNULUS_PRESS",
+    "required": true}, {"type": "double", "name": "AVG_CHOKE_SIZE_P", "required":
+    true}, {"type": "double", "name": "AVG_WHP_P", "required": true}, {"type": "double",
+    "name": "AVG_WHT_P", "required": true}, {"type": "double", "name": "BORE_GAS_VOL",
+    "required": true}, {"type": "double", "name": "BORE_WAT_VOL", "required": true},
+    {"type": "integer", "name": "year", "required": true}, {"type": "integer", "name":
+    "month", "required": true}, {"type": "integer", "name": "dayofyear", "required":
+    true}, {"type": "integer", "name": "dayofweek", "required": true}, {"type": "double",
+    "name": "BORE_OIL_VOL_lag_1", "required": true}, {"type": "double", "name": "BORE_OIL_VOL_lag_7",
+    "required": true}, {"type": "double", "name": "BORE_OIL_VOL_lag_14", "required":
+    true}, {"type": "double", "name": "BORE_OIL_VOL_roll_mean_7", "required": true},
+    {"type": "double", "name": "BORE_OIL_VOL_roll_std_7", "required": true}, {"type":
+    "double", "name": "BORE_OIL_VOL_roll_mean_14", "required": true}, {"type": "double",
+    "name": "BORE_OIL_VOL_roll_std_14", "required": true}, {"type": "double", "name":
+    "BORE_OIL_VOL_roll_mean_30", "required": true}, {"type": "double", "name": "BORE_OIL_VOL_roll_std_30",
+    "required": true}]'
+  outputs: '[{"type": "tensor", "tensor-spec": {"dtype": "float64", "shape": [-1]}}]'
+  params: null
+type_hint_from_example: false
+utc_time_created: '2025-07-25 05:30:11.337483'

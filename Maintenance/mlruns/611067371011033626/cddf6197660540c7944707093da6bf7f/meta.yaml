@@ -1,0 +1,15 @@
+artifact_uri: file:///c:/Users/USER/Downloads/Maintenance/mlruns/611067371011033626/cddf6197660540c7944707093da6bf7f/artifacts
+end_time: 1753099191893
+entry_point_name: ''
+experiment_id: '611067371011033626'
+lifecycle_stage: active
+run_id: cddf6197660540c7944707093da6bf7f
+run_name: DecisionTree
+run_uuid: cddf6197660540c7944707093da6bf7f
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1753099169677
+status: 3
+tags: []
+user_id: USER

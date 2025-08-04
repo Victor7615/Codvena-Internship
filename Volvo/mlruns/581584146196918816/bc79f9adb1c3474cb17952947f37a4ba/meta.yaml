@@ -1,0 +1,14 @@
+artifact_uri: file:///c:/Users/USER/Downloads/Codvena/Volvo/mlruns/581584146196918816/bc79f9adb1c3474cb17952947f37a4ba/artifacts
+end_time: 1753865444933
+entry_point_name: ''
+experiment_id: '581584146196918816'
+lifecycle_stage: active
+run_id: bc79f9adb1c3474cb17952947f37a4ba
+run_name: welcoming-panda-399
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1753865330657
+status: 3
+tags: []
+user_id: USER

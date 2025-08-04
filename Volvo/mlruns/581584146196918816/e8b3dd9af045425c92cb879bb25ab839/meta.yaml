@@ -1,0 +1,14 @@
+artifact_uri: file:///c:/Users/USER/Downloads/Codvena/Volvo/mlruns/581584146196918816/e8b3dd9af045425c92cb879bb25ab839/artifacts
+end_time: 1753638786591
+entry_point_name: ''
+experiment_id: '581584146196918816'
+lifecycle_stage: active
+run_id: e8b3dd9af045425c92cb879bb25ab839
+run_name: lyrical-calf-186
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1753638582558
+status: 3
+tags: []
+user_id: USER

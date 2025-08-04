@@ -1,0 +1,14 @@
+artifact_uri: file:///c:/Users/USER/Downloads/Codvena/Volvo/mlruns/581584146196918816/86b4c9b944464d74a5bea5693562c9b3/artifacts
+end_time: 1753413702967
+entry_point_name: ''
+experiment_id: '581584146196918816'
+lifecycle_stage: active
+run_id: 86b4c9b944464d74a5bea5693562c9b3
+run_name: trusting-rook-643
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1753413430367
+status: 4
+tags: []
+user_id: USER

@@ -1,0 +1,10 @@
+artifact_location: file:///c:/Users/USER/Downloads/Codvena/Volvo/mlruns/581584146196918816/models/m-808b93be93c14e20bf14518c6b54600b/artifacts
+creation_timestamp: 1753421273620
+experiment_id: '581584146196918816'
+last_updated_timestamp: 1753421321106
+model_id: m-808b93be93c14e20bf14518c6b54600b
+model_type: null
+name: model
+source_run_id: null
+status: 2
+status_message: null

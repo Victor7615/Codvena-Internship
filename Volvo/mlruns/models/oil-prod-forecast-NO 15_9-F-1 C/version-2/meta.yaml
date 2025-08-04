@@ -1,0 +1,18 @@
+aliases: []
+creation_timestamp: 1753638786404
+current_stage: None
+deployment_job_state: null
+description: null
+last_updated_timestamp: 1753638786404
+metrics: null
+model_id: m-39083e3c1675413eb19d1d73ff3ecb55
+name: oil-prod-forecast-NO 15_9-F-1 C
+params: null
+run_id: e8b3dd9af045425c92cb879bb25ab839
+run_link: null
+source: models:/m-39083e3c1675413eb19d1d73ff3ecb55
+status: READY
+status_message: null
+storage_location: file:///c:/Users/USER/Downloads/Codvena/Volvo/mlruns/581584146196918816/models/m-39083e3c1675413eb19d1d73ff3ecb55/artifacts
+user_id: null
+version: 2
