@@ -1,4 +1,4 @@
-artifact_location: file:///c:/Users/USER/Downloads/Codvena/Volvo/mlruns/581584146196918816/models/m-265d8b5038ca4a2bb0ac092cccc63ed7/artifacts
+artifact_location: Volvo/mlruns/581584146196918816/models/m-265d8b5038ca4a2bb0ac092cccc63ed7/artifacts/
 creation_timestamp: 1753865355588
 experiment_id: '581584146196918816'
 last_updated_timestamp: 1753865444629
