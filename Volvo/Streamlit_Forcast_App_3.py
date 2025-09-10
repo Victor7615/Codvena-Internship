@@ -20,19 +20,31 @@ import mlflow
 import time
 from datetime import timedelta
 import os
+
 # --- Configuration ---
 # This should match the experiment name in your training script
 MLFLOW_EXPERIMENT_NAME = "Oil_Production_Forecasting_Volve"
 # This should match the well code you trained the model on
 WELL_TO_MODEL = 'NO 15/9-F-1 C'
 # Path to the original data, needed to create features for new predictions
+# NOTE: This path should be relative to the repository, not a local drive.
+# Ensure this file is committed to your GitHub repository.
 DATA_FILE_PATH = "Volve production data.xlsx"
 # Target variable
 TARGET_VARIABLE = 'BORE_OIL_VOL'
+
+# --- IMPORTANT: Configure MLflow Tracking URI for local repository ---
+# This sets the MLflow tracking URI to the local 'mlruns' directory.
+# This approach works because your 'mlruns' folder is committed to the repository.
 MLFLOW_TRACKING_URI_LOCAL = "mlruns/"
-# Configure MLflow Tracking URI for local repository
 os.environ["MLFLOW_TRACKING_URI"] = MLFLOW_TRACKING_URI_LOCAL
+
+# You must also specify where the artifacts are located
+# This tells MLflow to look for the model artifacts in a subdirectory named 'models'
+# This is a common practice when models are stored in the same repository.
 os.environ["MLFLOW_TRACKING_SERVER_ARTIFACT_URI"] = "mlruns/"
+
+
 @st.cache_resource
 def load_mlflow_model():
     """
@@ -41,12 +53,16 @@ def load_mlflow_model():
     """
     model_name = f"oil-prod-forecast-{WELL_TO_MODEL.replace('/', '_')}"
     try:
+        # Before loading, check if the tracking URI is set correctly.
+        st.write(f"Connecting to MLflow tracking server at: {mlflow.get_tracking_uri()}")
+        # The 'models:' URI will now resolve correctly to the local mlruns folder.
         model_uri = f"models:/{model_name}/latest"
         model = mlflow.pyfunc.load_model(model_uri)
         return model
     except Exception as e:
         st.error(f"Could not load the model from MLflow registry: {e}")
-        st.info("Please ensure the training script has been run successfully and the model is registered.")
+        st.info("Please ensure the training script has been run successfully, the model is registered, and the MLflow folder is committed to your repository.")
+        st.info("The expected model location is `mlruns/{experiment_id}/{run_id}/artifacts/models/`")
         return None
 
 @st.cache_data
@@ -131,7 +147,7 @@ model = load_mlflow_model()
 historical_data = load_historical_data(DATA_FILE_PATH, WELL_TO_MODEL)
 
 if model is None or historical_data is None or historical_data.empty:
-    st.warning("Application cannot start because the model or data is unavailable.")
+    st.warning("Application cannot start because the model or data is unavailable. Please check the logs above for more details.")
 else:
     col1, col2 = st.columns([1, 1])
 
@@ -183,7 +199,7 @@ else:
             with st.spinner("Generating features and running prediction..."):
                 # Always use the last 30 days of the full dataset for feature engineering
                 latest_data_for_features = historical_data.tail(30)
-                
+
                 # Create the feature vector for the prediction
                 features_df = create_features_for_prediction(user_inputs, latest_data_for_features)
 
@@ -203,7 +219,7 @@ else:
     # --- DATE RANGE SELECTOR ---
     min_date = historical_data.index.min().date()
     max_date = historical_data.index.max().date()
-    
+
     # Set default range to the last 30 days
     default_start_date = max_date - timedelta(days=29)
 
@@ -218,6 +234,6 @@ else:
     else:
         # Filter data based on user selection
         filtered_data = historical_data.loc[start_date:end_date]
-        
+
         st.line_chart(filtered_data[TARGET_VARIABLE])
         st.dataframe(filtered_data)
