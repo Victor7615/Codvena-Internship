@@ -49,7 +49,7 @@ def load_mlflow_model():
     # This bypasses the MLflow registry's hardcoded paths.
     # It assumes the mlruns folder is committed to the repo.
     # The path is constructed from your specific experiment and run ID.
-    model_path = "mlruns/581584146196918816/bc79f9adb1c3474cb17952947f37a4ba/artifacts/model"
+    model_path = "Volvo/mlruns/581584146196918816/models/m-265d8b5038ca4a2bb0ac092cccc63ed7/artifacts"
     try:
         st.info(f"Attempting to load model from: {model_path}")
         # Load the model directly using the file path URI.
