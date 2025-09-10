@@ -33,39 +33,31 @@ DATA_FILE_PATH = "Volve production data.xlsx"
 # Target variable
 TARGET_VARIABLE = 'BORE_OIL_VOL'
 
-# --- IMPORTANT: Configure MLflow Tracking URI for local repository ---
-# This sets the MLflow tracking URI to the local 'mlruns' directory.
-# This tells MLflow to look for its experiments and registered models
-# within this folder, which should be committed to your repository.
-MLFLOW_TRACKING_URI_LOCAL = "mlruns/"
-os.environ["MLFLOW_TRACKING_URI"] = MLFLOW_TRACKING_URI_LOCAL
-
-# You must also specify where the artifacts are located
-# This tells MLflow to look for the model artifacts in the specified folder
-# which is relative to the current working directory (your repo).
-os.environ["MLFLOW_TRACKING_SERVER_ARTIFACT_URI"] = "mlruns/"
-
+# We are bypassing the MLflow registry's stored file path by directly
+# loading from the artifact folder, so we do not need to set these.
+# os.environ["MLFLOW_TRACKING_URI"] = "mlruns/"
+# os.environ["MLFLOW_TRACKING_SERVER_ARTIFACT_URI"] = "mlruns/"
 
 @st.cache_resource
 def load_mlflow_model():
     """
-    Loads the latest version of the registered MLflow model.
+    Loads the latest version of the registered MLflow model by
+    directly referencing its artifact path in the repository.
     The resource is cached to avoid reloading on every interaction.
     """
-    # The name of the model registered in your MLflow registry.
-    # Based on the metadata you provided, this is the correct name.
-    model_name = "oil-prod-forecast-NO 15_9-F-1 C"
+    # The direct relative path to the model's artifact directory.
+    # This bypasses the MLflow registry's hardcoded paths.
+    # It assumes the mlruns folder is committed to the repo.
+    # The path is constructed from your specific experiment and run ID.
+    model_path = "mlruns/581584146196918816/bc79f9adb1c3474cb17952947f37a4ba/artifacts/model"
     try:
-        # Before loading, check if the tracking URI is set correctly.
-        st.write(f"Connecting to MLflow tracking server at: {mlflow.get_tracking_uri()}")
-        # The 'models:' URI will now resolve correctly to the local mlruns folder.
-        model_uri = f"models:/{model_name}/latest"
-        model = mlflow.pyfunc.load_model(model_uri)
+        st.info(f"Attempting to load model from: {model_path}")
+        # Load the model directly using the file path URI.
+        model = mlflow.pyfunc.load_model(model_path)
         return model
     except Exception as e:
-        st.error(f"Could not load the model from MLflow registry: {e}")
-        st.info("Please ensure the training script has been run successfully, the model is registered, and the 'mlruns' folder is committed to your repository.")
-        st.info("The application is currently looking for the model within the `mlruns` directory.")
+        st.error(f"Could not load the model from MLflow artifacts: {e}")
+        st.info("Please verify the model artifact path and ensure the `mlruns` folder is committed to your repository.")
         return None
 
 @st.cache_data
