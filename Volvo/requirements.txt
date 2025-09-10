@@ -5,3 +5,4 @@ scikit-learn==1.7.1
 matplotlib==3.10.3
 openpyxl==3.1.5
 mlflow==3.1.4
+streamlit
