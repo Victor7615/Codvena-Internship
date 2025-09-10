@@ -29,7 +29,10 @@ WELL_TO_MODEL = 'NO 15/9-F-1 C'
 DATA_FILE_PATH = "Volve production data.xlsx"
 # Target variable
 TARGET_VARIABLE = 'BORE_OIL_VOL'
-
+MLFLOW_TRACKING_URI_LOCAL = "mlruns/"
+# Configure MLflow Tracking URI for local repository
+os.environ["MLFLOW_TRACKING_URI"] = MLFLOW_TRACKING_URI_LOCAL
+os.environ["MLFLOW_TRACKING_SERVER_ARTIFACT_URI"] = "mlruns/"
 @st.cache_resource
 def load_mlflow_model():
     """
