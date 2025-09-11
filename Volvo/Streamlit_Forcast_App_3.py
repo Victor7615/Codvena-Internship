@@ -51,7 +51,7 @@ def load_mlflow_model():
     # The path is constructed from your specific experiment and run ID.
     model_path = "mlruns/581584146196918816/models/m-265d8b5038ca4a2bb0ac092cccc63ed7/artifacts"
     try:
-        st.info(f"Attempting to load model from: {model_path}")
+        st.info(f"Model Loaded from: {model_path}")
         # Load the model directly using the file path URI.
         model = mlflow.pyfunc.load_model(model_path)
         return model
